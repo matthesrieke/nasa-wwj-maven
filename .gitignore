@@ -1,0 +1,12 @@
+target
+.settings/*
+.project
+.classpath
+.svn
+*~
+worldwind*.jar
+gluegen*.jar
+jogl*.jar
+gdal*.jar
+plugin*.jar
+vpf-symbols*.jar

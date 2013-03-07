@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.nasa</groupId>
+	<artifactId>wwj</artifactId>
+	<version>1.4</version>
+	<packaging>jar</packaging>
+
+<!-- 	<modules>
+		<module>worldwind</module>
+		<module>worldwindx</module>
+	</modules> -->
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<!-- Tentative local repo for libs that are not migrated to Maven dependency 
+				mechanism and available in online repositories. -->
+			<id>lib-repository</id>
+			<name>Local Repository</name>
+			<url>file:///${basedir}/lib-repository/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>gov.nasa</groupId>
+			<artifactId>worldwind</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>gov.nasa</groupId>
+			<artifactId>worldwind</artifactId>
+			<version>1.4</version>
+			<type>jar</type>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>gov.nasa</groupId>
+			<artifactId>worldwindx</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>gov.nasa</groupId>
+			<artifactId>worldwindx</artifactId>
+			<version>1.4</version>
+			<type>jar</type>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>wwj-ext</groupId>
+			<artifactId>gdal</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>wwj-ext</groupId>
+			<artifactId>plugin</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>wwj-ext</groupId>
+			<artifactId>vpf-symbols</artifactId>
+			<version>1.5</version>
+		</dependency>
+	</dependencies>
+</project>
