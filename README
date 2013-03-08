@@ -1,3 +1,83 @@
 Maven setup for Nasa Worldwind 4 Java (WWJ) 1.5.
+#############################################
 
-Instructions tbd.
+As WWJ is currently not available in public maven repositories and in
+general does not provide a maven-managed project setup, I decided to
+create a maven project skeleton to allow wwj to be included into your
+local maven repository.
+
+This could also be used as a basis for a migration to Maven (3) by the
+official WWJ project.
+
+Instructions
+------------
+
+No .jar files are included in this project, meaning that a bit of
+manual work is needed to set things up.
+
+## Step 1 ##
+Download the WorldWind Java SDK Release (tested with 1.5) at
+http://worldwind.arc.nasa.gov/java/
+
+## Step 2 ##
+A set of .jar files is included in the base directory of the ZIP file.
+You will need to copy and rename these .jar files into the local library
+repository folder structure of this project ("lib-repository"). The
+following listing provides the naming and destination directory:
+
+worldwind.jar -> lib-repository/gov/nasa/worldwind/1.5/worldwind-1.5.jar
+worldwindx.jar -> lib-repository/gov/nasa/worldwindx/1.5/worldwindx-1.5.jar
+gluegen-rt.jar -> lib-repository/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05.jar
+jogl.jar -> lib-repository/net/java/dev/jogl/jogl/1.1.2-pre-20080523/jogl-1.1.2-pre-20080523.jar
+plugin.jar -> lib-repository/wwj-ext/plugin/1.5/plugin-1.5.jar
+gdal.jar -> lib-repository/wwj-ext/gdal/1.5/gdal-1.5.jar
+vpf-symbols.jar -> lib-repository/wwj-ext/gdal/1.5/vpf-symbols-1.5.jar
+
+## Step 3 ##
+Gluegen and JOGL both need native libraries which match the OS and its
+architecture (i386, amd64, ...). Unfortunately, the WWJ SDK release
+does only provide Windows-amd64 pre-packaged .jar files. The other native
+drivers are not labelled at all, but they seem to be i386. Meaning: You
+cannot avoid downloading these manually from somewhere else. Here are
+some suggestions:
+
+Gluegen has an archive for its 1.0 master branch:
+http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/
+
+Same applies for JOGL 1.1.x:
+http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/
+
+Again, you have to apply the maven folder structure and naming, e.g.:
+
+jogl-natives-linux-amd64.jar -> lib-repository/net/java/dev/jogl/jogl/1.1.2-pre-20080523/jogl-1.1.2-pre-20080523-natives-linux-amd64.jar
+
+and
+
+gluegen-rt-natives-linux-amd64.jar -> lib-repository/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-linux-amd64.jar
+
+This works quite well for me on Ubuntu 12.10 and did as well on 11.04
+and 12.04.
+
+## Optional Step 3b ##
+Currently, this project only considers Windows and Linux amd64 native .jar
+libraries. The gluegen-rt-main-<version>.pom and jogl-main-<version>.pom
+have commented the rest of the natives out as this would need additional
+manual work.
+If you are on a different architecture (e.g. android) you will need to uncomment the
+section in the lib-repository/net/java/dev/gluegen/gluegen-rt-main/<version>/gluegen-rt-main-<version>.pom
+and lib-repository/net/java/dev/jogl/jogl-main/<version>/jogl-main-<version>.pom
+and include the natives as described in Step 3.
+
+## Step 4 ##
+Final step: compile project.
+
+"mvn clean install" should do the job and installs all artifacts to
+your local maven repository, enabling the usage of WWJ in any maven-managed
+project. An example is available at https://github.com/matthesrieke/aixm4worldwind.
+
+A dependecy would look like:
+<dependency>
+	<groupId>gov.nasa</groupId>
+	<artifactId>wwj</artifactId>
+	<version>1.5</version>
+</dependency>
