@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>net.java.dev.jogl</groupId>
 			<artifactId>jogl-main</artifactId>
-			<version>1.1.2-pre-20080523</version>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>net.java.dev.gluegen</groupId>

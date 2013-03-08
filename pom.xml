@@ -52,6 +52,7 @@
 			<artifactId>worldwind</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+<!--
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwind</artifactId>
@@ -59,11 +60,13 @@
 			<type>jar</type>
 			<classifier>sources</classifier>
 		</dependency>
+-->
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwindx</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+<!--
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwindx</artifactId>
@@ -71,5 +74,6 @@
 			<type>jar</type>
 			<classifier>sources</classifier>
 		</dependency>
+-->
 	</dependencies>
 </project>

@@ -28,7 +28,7 @@ following listing provides the naming and destination directory:
 worldwind.jar -> lib-repository/gov/nasa/worldwind/1.5/worldwind-1.5.jar
 worldwindx.jar -> lib-repository/gov/nasa/worldwindx/1.5/worldwindx-1.5.jar
 gluegen-rt.jar -> lib-repository/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05.jar
-jogl.jar -> lib-repository/net/java/dev/jogl/jogl/1.1.2-pre-20080523/jogl-1.1.2-pre-20080523.jar
+jogl.jar -> lib-repository/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1.jar
 plugin.jar -> lib-repository/wwj-ext/plugin/1.5/plugin-1.5.jar
 gdal.jar -> lib-repository/wwj-ext/gdal/1.5/gdal-1.5.jar
 vpf-symbols.jar -> lib-repository/wwj-ext/gdal/1.5/vpf-symbols-1.5.jar
@@ -49,7 +49,7 @@ http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/
 
 Again, you have to apply the maven folder structure and naming, e.g.:
 
-jogl-natives-linux-amd64.jar -> lib-repository/net/java/dev/jogl/jogl/1.1.2-pre-20080523/jogl-1.1.2-pre-20080523-natives-linux-amd64.jar
+jogl-natives-linux-amd64.jar -> lib-repository/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-linux-amd64.jar
 
 and
 
