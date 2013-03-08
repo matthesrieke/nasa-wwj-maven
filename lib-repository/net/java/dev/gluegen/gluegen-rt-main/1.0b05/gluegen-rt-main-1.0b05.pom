@@ -6,7 +6,6 @@
 	<groupId>net.java.dev.gluegen</groupId>
 	<artifactId>gluegen-rt-main</artifactId>
 	<version>1.0b05</version>
-	<packaging>jar</packaging>
 	<name>GlueGen Runtime</name>
 	<description>JNI binding generator (runtime)</description>
 	<url>http://jogamp.org/gluegen/www/</url>

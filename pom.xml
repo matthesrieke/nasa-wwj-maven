@@ -7,11 +7,6 @@
 	<version>1.4</version>
 	<packaging>jar</packaging>
 
-<!-- 	<modules>
-		<module>worldwind</module>
-		<module>worldwindx</module>
-	</modules> -->
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -50,45 +45,31 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwind</artifactId>
-			<version>1.4</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwind</artifactId>
-			<version>1.4</version>
+			<version>${project.version}</version>
 			<type>jar</type>
 			<classifier>sources</classifier>
 		</dependency>
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwindx</artifactId>
-			<version>1.4</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>gov.nasa</groupId>
 			<artifactId>worldwindx</artifactId>
-			<version>1.4</version>
+			<version>${project.version}</version>
 			<type>jar</type>
 			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
-			<groupId>wwj-ext</groupId>
-			<artifactId>gdal</artifactId>
-			<version>1.5</version>
-		</dependency>
-		<dependency>
-			<groupId>wwj-ext</groupId>
-			<artifactId>plugin</artifactId>
-			<version>1.5</version>
-		</dependency>
-		<dependency>
-			<groupId>wwj-ext</groupId>
-			<artifactId>vpf-symbols</artifactId>
-			<version>1.5</version>
 		</dependency>
 	</dependencies>
 </project>

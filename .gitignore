@@ -10,3 +10,5 @@ jogl*.jar
 gdal*.jar
 plugin*.jar
 vpf-symbols*.jar
+!gluegen-rt-main*.jar
+!jogl-main*.jar
