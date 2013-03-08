@@ -39,11 +39,6 @@
 		</dependency>
 		<dependency>
 			<groupId>wwj-ext</groupId>
-			<artifactId>gdal</artifactId>
-			<version>1.5</version>
-		</dependency>
-		<dependency>
-			<groupId>wwj-ext</groupId>
 			<artifactId>plugin</artifactId>
 			<version>1.5</version>
 		</dependency>
@@ -51,6 +46,11 @@
 			<groupId>wwj-ext</groupId>
 			<artifactId>vpf-symbols</artifactId>
 			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gdal</groupId>
+			<artifactId>gdal</artifactId>
+			<version>1.7.2</version>
 		</dependency>
 	</dependencies>
 </project>
