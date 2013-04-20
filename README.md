@@ -12,29 +12,34 @@ official WWJ project.
 
 No .jar files are included in this project, but the pom consists of a
 comfortable way of dealing with this situation. You only need to place the
-worldwind-1.5.0.zip into the root of this project and run "mvn clean install".
+worldwind-1.5.0.zip into the root of this project and run `mvn clean install`.
 
 ## Insights
 
 Using the maven-antrun-plugin, the archive is extracted and all .jar files
 are copied to a dedicated local library repository (nasa-wwj/lib-repository).
-Addiotnally, some natives are downloaded form jogamp mirrors. Check the pom.xml
+Additionally, some natives are downloaded form jogamp mirrors. Check the pom.xml
 for insights.
 
 ## Include in your Project
 
 A dependecy would look like:
+
+```xml
 <dependency>
 	<groupId>gov.nasa</groupId>
 	<artifactId>wwj</artifactId>
 	<version>1.5.0-SNASHOT</version>
 </dependency>
+```
 
 ## Example pom.xml
 
-This POM can serve as a skeleton for a project.
+This POM can serve as a skeleton for a project. It includes unpacking
+of native libraries (e.g. jogl and gluegen), creating executable scripts
+and preparing an assembly (you will need an assemble.xml in src/main/config)
 
-´´´xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -149,4 +154,4 @@ This POM can serve as a skeleton for a project.
 	</build>
 
 </project>
-´´´
+```
