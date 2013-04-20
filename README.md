@@ -10,13 +10,13 @@ official WWJ project.
 
 ## Instructions
 
-No .jar files are included in this project, but the pom consists of a
+No .jar files are included in this project, but the POM consists of a
 comfortable way of dealing with this situation. You only need to place the
-worldwind-1.5.0.zip into the root of this project and run `mvn clean install`.
+[worldwind-1.5.0.zip](http://worldwind.arc.nasa.gov/java/) into the root of this project and run `mvn clean install`.
 
 ## Insights
 
-Using the maven-antrun-plugin, the archive is extracted and all .jar files
+Using the maven-antrun-plugin, the worldwind release archive is extracted and all .jar files
 are copied to a dedicated local library repository (nasa-wwj/lib-repository).
 Additionally, some natives are downloaded form jogamp mirrors. Check the pom.xml
 for insights.
@@ -36,15 +36,15 @@ A dependecy would look like:
 ## Example pom.xml
 
 This POM can serve as a skeleton for a project. It includes unpacking
-of native libraries (e.g. jogl and gluegen), creating executable scripts
-and preparing an assembly (you will need an assemble.xml in src/main/config)
+of native libraries (e.g. jogl and gluegen) and creating executable scripts
+for a built-in WWJ example application (placed in target/appassembler).
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>my.wwj.project</groupId>
 	<artifactId>wwj-skeleton</artifactId>
 	<version>1.0-SNAPSHOT</version>
@@ -96,7 +96,7 @@ and preparing an assembly (you will need an assemble.xml in src/main/config)
 						<configuration>
 							<programs>
 								<program>
-									<mainClass>my.test.MainClass</mainClass>
+									<mainClass>gov.nasa.worldwindx.examples.Airspaces</mainClass>
 									<name>MyWWJProject</name>
 								</program>
 							</programs>
@@ -128,25 +128,6 @@ and preparing an assembly (you will need an assemble.xml in src/main/config)
 							<goal>copy</goal>
 						</goals>
 						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.2</version>
-				<executions>
-					<execution>
-						<id>assemble-release</id>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<phase>install</phase>
-						<configuration>
-							<descriptors>
-								<descriptor>src/main/config/assemble.xml</descriptor>
-							</descriptors>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
