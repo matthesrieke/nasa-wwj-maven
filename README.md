@@ -10,23 +10,26 @@ official WWJ project.
 
 ## Instructions
 
-No .jar files are included in this project, but the pom consists of a
+No .jar files are included in this project, but the POM consists of a
 comfortable way of dealing with this situation. You only need to place the
-worldwind-1.5.0.zip into the root of this project and run "mvn clean install".
+[worldwind-1.5.0.zip](http://worldwind.arc.nasa.gov/java/) into the root of
+this project and run `mvn clean install`.
 
 ## Insights
 
 Using the maven-antrun-plugin, the archive is extracted and all .jar files
 are copied to a dedicated local library repository (nasa-wwj/lib-repository).
-Addiotnally, some natives are downloaded form jogamp mirrors. Check the pom.xml
+Additionally, some natives are downloaded form jogamp mirrors. Check the pom.xml
 for insights.
 
 ## Include in your Project
 
 A dependecy would look like:
+
+```xml
 <dependency>
 	<groupId>gov.nasa</groupId>
 	<artifactId>wwj</artifactId>
-	<version>1.5.0-SNASHOT</version>
+	<version>1.5.0-SNAPSHOT</version>
 </dependency>
-
+```
