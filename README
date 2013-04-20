@@ -9,7 +9,7 @@ local maven repository.
 This could also be used as a basis for a migration to Maven (3) by the
 official WWJ project.
 
-Instructions
+OLD Instructions
 ------------
 
 No .jar files are included in this project, meaning that a bit of

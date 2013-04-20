@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>wwj-ext</groupId>
-	<artifactId>vpf-symbols</artifactId>
+	<artifactId>plugin</artifactId>
 	<packaging>jar</packaging>
-	<version>1.5</version>
+	<version>1.5.0</version>
 
 </project>

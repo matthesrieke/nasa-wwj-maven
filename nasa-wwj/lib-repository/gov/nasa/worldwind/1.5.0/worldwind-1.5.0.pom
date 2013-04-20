@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa</groupId>
 	<artifactId>worldwind</artifactId>
-	<version>1.5</version>
+	<version>1.5.0</version>
 	<packaging>jar</packaging>
 
 	<repositories>
@@ -40,12 +40,12 @@
 		<dependency>
 			<groupId>wwj-ext</groupId>
 			<artifactId>plugin</artifactId>
-			<version>1.5</version>
+			<version>1.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>wwj-ext</groupId>
 			<artifactId>vpf-symbols</artifactId>
-			<version>1.5</version>
+			<version>1.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gdal</groupId>

@@ -3,13 +3,30 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa</groupId>
-	<artifactId>wwj</artifactId>
-	<version>1.5</version>
-	<packaging>jar</packaging>
+	<artifactId>wwj-parent</artifactId>
+	<version>1.5.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>nasa-wwj</module>
+	</modules>
+
+	<properties>
+		<wwj.release.version>1.5.0</wwj.release.version>
+		<tmp.archive.dir>${project.build.directory}/wwj-archive</tmp.archive.dir>
+		<lib.repo.dir>nasa-wwj/lib-repository</lib.repo.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -22,58 +39,87 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<!-- Tentative local repo for libs that are not migrated to Maven dependency 
-				mechanism and available in online repositories. -->
-			<id>lib-repository</id>
-			<name>Local Repository</name>
-			<url>file:///${basedir}/lib-repository/</url>
-		</repository>
-	</repositories>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>gov.nasa</groupId>
+				<artifactId>worldwind</artifactId>
+				<version>${wwj.release.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>gov.nasa</groupId>
+				<artifactId>worldwindx</artifactId>
+				<version>${wwj.release.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>gov.nasa</groupId>
-			<artifactId>worldwind</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-<!--
-		<dependency>
-			<groupId>gov.nasa</groupId>
-			<artifactId>worldwind</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-			<classifier>sources</classifier>
-		</dependency>
--->
-		<dependency>
-			<groupId>gov.nasa</groupId>
-			<artifactId>worldwindx</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-<!--
-		<dependency>
-			<groupId>gov.nasa</groupId>
-			<artifactId>worldwindx</artifactId>
-			<version>${project.version}</version>
-			<type>jar</type>
-			<classifier>sources</classifier>
-		</dependency>
--->
-	</dependencies>
+	<profiles>
+		<profile>
+			<id>prepare-via-wwj-archive</id>
+			<activation>
+				<property>
+					<name>!disable-prepartion</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>extract-wwj</id>
+								<phase>initialize</phase>
+								<inherited>false</inherited>
+								<configuration>
+									<target>
+										<echo message="Extracting WWJ archive..." />
+										<unzip src="worldwind-${wwj.release.version}.zip" dest="${tmp.archive.dir}" />
+										<copy file="${tmp.archive.dir}/worldwind.jar"
+											tofile="${lib.repo.dir}/gov/nasa/worldwind/${wwj.release.version}/worldwind-${wwj.release.version}.jar" />
+										<copy file="${tmp.archive.dir}/worldwindx.jar"
+											tofile="${lib.repo.dir}/gov/nasa/worldwindx/${wwj.release.version}/worldwindx-${wwj.release.version}.jar" />
+										<copy file="${tmp.archive.dir}/gdal.jar"
+											tofile="${lib.repo.dir}/org/gdal/gdal/1.7.2/gdal-1.7.2.jar" />
+										<copy file="${tmp.archive.dir}/vpf-symbols.jar"
+											tofile="${lib.repo.dir}/wwj-ext/vpf-symbols/${wwj.release.version}/vpf-symbols-${wwj.release.version}.jar" />
+										<copy file="${tmp.archive.dir}/plugin.jar"
+											tofile="${lib.repo.dir}/wwj-ext/plugin/${wwj.release.version}/plugin-${wwj.release.version}.jar" />
+										<copy file="${tmp.archive.dir}/jogl.jar"
+											tofile="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1.jar" />
+										<copy file="${tmp.archive.dir}/gluegen-rt.jar"
+											tofile="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-windows-amd64.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-windows-amd64.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-linux-amd64.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-linux-amd64.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-windows-amd64.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-windows-amd64.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-linux-amd64.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-linux-amd64.jar" />
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
