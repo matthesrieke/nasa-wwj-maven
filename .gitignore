@@ -4,6 +4,7 @@ target
 .classpath
 .svn
 *~
+worldwind*.zip
 worldwind*.jar
 gluegen*.jar
 jogl*.jar
