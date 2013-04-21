@@ -98,6 +98,7 @@
 											tofile="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1.jar" />
 										<copy file="${tmp.archive.dir}/gluegen-rt.jar"
 											tofile="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05.jar" />
+										<!-- Jogl Natives -->
 										<get
 											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-windows-amd64.jar"
 											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-windows-amd64.jar" />
@@ -105,11 +106,60 @@
 											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-linux-amd64.jar"
 											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-linux-amd64.jar" />
 										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-windows-i586.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-windows-i586.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-linux-i586.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-linux-i586.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-macosx-ppc.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-macosx-ppc.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-macosx-universal.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-macosx-universal.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-solaris-i586.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-solaris-i586.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-solaris-amd64.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-solaris-amd64.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-solaris-sparc.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-solaris-sparc.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/jogl-old-1.1.1/jogl-natives-solaris-sparcv9.jar"
+											dest="${lib.repo.dir}/net/java/dev/jogl/jogl/1.1.1/jogl-1.1.1-natives-solaris-sparcv9.jar" />
+										<!-- Gluegen Natives -->
+										<get
 											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-windows-amd64.jar"
 											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-windows-amd64.jar" />
 										<get
 											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-linux-amd64.jar"
 											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-linux-amd64.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-linux-i586.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-linux-i586.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-windows-i586.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-windows-i586.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-macosx-ppc.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-macosx-ppc.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-macosx-universal.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-macosx-universal.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-solaris-sparc.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-solaris-sparc.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-solaris-sparcv9.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-solaris-sparcv9.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-solaris-amd64.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-solaris-amd64.jar" />
+										<get
+											src="http://jogamp.org/deployment/archive/master/gluegen-old-1.0b6/gluegen-rt-natives-solaris-i586.jar"
+											dest="${lib.repo.dir}/net/java/dev/gluegen/gluegen-rt/1.0b05/gluegen-rt-1.0b05-natives-solaris-i586.jar" />
 									</target>
 								</configuration>
 								<goals>

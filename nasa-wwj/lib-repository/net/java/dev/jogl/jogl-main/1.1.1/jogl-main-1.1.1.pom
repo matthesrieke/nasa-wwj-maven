@@ -35,5 +35,61 @@
 			<classifier>natives-windows-amd64</classifier>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-linux-i586</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-windows-i586</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-macosx-ppc</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-macosx-universal</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-solaris-amd64</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-solaris-i586</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-solaris-sparc</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jogl</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-solaris-sparcv9</classifier>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 </project>

@@ -43,21 +43,22 @@ and preparing an assembly (you will need an assemble.xml in src/main/config)
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>my.wwj.project</groupId>
 	<artifactId>wwj-skeleton</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
-	<name>aixm4wwj-skeleton</name>
+	<name>wwj-skeleton</name>
 
 	<properties>
 		<assemble.dir>${project.build.directory}/appassembler</assemble.dir>
+		<natives.target.basedir>../lib/natives</natives.target.basedir>
 		<wwj.version>1.5.0-SNAPSHOT</wwj.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -96,11 +97,11 @@ and preparing an assembly (you will need an assemble.xml in src/main/config)
 						<configuration>
 							<programs>
 								<program>
-									<mainClass>my.test.MainClass</mainClass>
+									<mainClass>gov.nasa.worldwindx.examples.Airspaces</mainClass>
 									<name>MyWWJProject</name>
 								</program>
 							</programs>
-							<extraJvmArguments>-Djava.library.path=../lib/natives</extraJvmArguments>
+							<extraJvmArguments>-Djava.library.path=${natives.target.basedir}/linux-${natives.classifier}${path.sep}${natives.target.basedir}/windows-${natives.classifier}</extraJvmArguments>
 							<assembleDirectory>${assemble.dir}</assembleDirectory>
 							<repositoryName>lib</repositoryName>
 							<repositoryLayout>flat</repositoryLayout>
@@ -119,7 +120,7 @@ and preparing an assembly (you will need an assemble.xml in src/main/config)
 				<version>0.0.7</version>
 				<configuration>
 					<nativesTargetDir>${assemble.dir}/lib/natives</nativesTargetDir>
-					<separateDirs>false</separateDirs>
+					<separateDirs>true</separateDirs>
 				</configuration>
 				<executions>
 					<execution>
@@ -131,27 +132,56 @@ and preparing an assembly (you will need an assemble.xml in src/main/config)
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.2</version>
-				<executions>
-					<execution>
-						<id>assemble-release</id>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<phase>install</phase>
-						<configuration>
-							<descriptors>
-								<descriptor>src/main/config/assemble.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>unix</id>
+			<activation>
+				<os>
+					<family>unix</family>
+				</os>
+			</activation>
+			<properties>
+				<path.sep>:</path.sep>
+			</properties>
+		</profile>
+		<profile>
+			<id>windows</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<path.sep>;</path.sep>
+			</properties>
+		</profile>
+		<profile>
+			<id>amd64</id>
+			<activation>
+				<property>
+					<name>!architecture</name>
+				</property>
+			</activation>
+			<properties>
+				<natives.classifier>amd64</natives.classifier>
+			</properties>
+		</profile>
+		<profile>
+			<id>i586</id>
+			<activation>
+				<property>
+					<name>architecture</name>
+					<value>i586</value>
+				</property>
+			</activation>
+			<properties>
+				<natives.classifier>i586</natives.classifier>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
 ```
