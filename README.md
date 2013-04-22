@@ -36,8 +36,7 @@ A dependecy would look like:
 ## Example pom.xml
 
 This POM can serve as a skeleton for a project. It includes unpacking
-of native libraries (e.g. jogl and gluegen), creating executable scripts
-and preparing an assembly (you will need an assemble.xml in src/main/config)
+of native libraries (e.g. jogl and gluegen) and creating executable scripts.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
